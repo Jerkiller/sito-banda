@@ -2,7 +2,8 @@ backend:
   name: github
   repo: Jerkiller/sito-banda
   branch: main
-  base_url: https://sito-banda.luca-favorido.workers.dev
+  base_url: https://decap-oauth.luca-favorido.workers.dev
+  auth_endpoint: api/auth
 
 media_folder: "src/images/uploads"
 public_folder: "/images/uploads"
