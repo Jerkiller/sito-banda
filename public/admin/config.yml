@@ -5,7 +5,7 @@ backend:
   base_url: https://decap-oauth.luca-favorido.workers.dev
   auth_endpoint: api/auth
 
-media_folder: "src/images/uploads"
+media_folder: "src/assets/uploads"
 public_folder: "/images/uploads"
 # logo:
 #   src: https://your-site.com/images/logo.svg
@@ -13,29 +13,17 @@ public_folder: "/images/uploads"
 
 # # This also works, but it's deprecated. Same as logo.src
 # logo_url: https://your-site.com/images/logo.svg
-locale: 'it'
+# locale: 'it'
 
 collections:
-  - name: "pagine"
-    label: "Pagine"
-    files:
-      - file: "src/content/it/index.md"
-        label: "Homepage IT"
-        fields:
-          - {label: "Titolo", name: "title", widget: "string"}
-          - {label: "Contenuto", name: "body", widget: "markdown"}
-  - name: "news"
-    label: "News"
-    folder: "src/content/it/news"
-    create: true
-    fields:
-      - {label: "Titolo", name: "title", widget: "string"}
-      - {label: "Data", name: "date", widget: "datetime"}
-      - {label: "Contenuto", name: "body", widget: "markdown"}
-  - name: "gallery"
-    label: "Gallery"
-    folder: "src/content/gallery"
-    create: true
-    fields:
-      - {label: "Immagine", name: "image", widget: "image"}
-      - {label: "Descrizione", name: "caption", widget: "string"}
+  - name: "blog" # Used in routes, e.g., /admin/collections/blog
+    label: "Blog" # Used in the UI
+    folder: "content/blog" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "string" }
+      - { label: "Publish Date", name: "pubDate", widget: "datetime" }
+      - { label: "Featured Image", name: "heroImage", widget: "image" }
+      - { label: "Body", name: "body", widget: "markdown" }
