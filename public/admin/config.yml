@@ -6,7 +6,7 @@ backend:
   auth_endpoint: api/auth
 
 media_folder: "src/assets/uploads"
-public_folder: "/images/uploads"
+# public_folder: "/images/uploads"
 # logo:
 #   src: https://your-site.com/images/logo.svg
 #   show_in_header: true
