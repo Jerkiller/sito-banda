@@ -1,0 +1,40 @@
+backend:
+  name: github
+  repo: Jerkiller/sito-banda
+  branch: main
+  base_url: https://sito-banda.luca-favorido.workers.dev
+
+media_folder: "src/images/uploads"
+public_folder: "/images/uploads"
+# logo:
+#   src: https://your-site.com/images/logo.svg
+#   show_in_header: true
+
+# # This also works, but it's deprecated. Same as logo.src
+# logo_url: https://your-site.com/images/logo.svg
+locale: 'it'
+
+collections:
+  - name: "pagine"
+    label: "Pagine"
+    files:
+      - file: "src/content/it/index.md"
+        label: "Homepage IT"
+        fields:
+          - {label: "Titolo", name: "title", widget: "string"}
+          - {label: "Contenuto", name: "body", widget: "markdown"}
+  - name: "news"
+    label: "News"
+    folder: "src/content/it/news"
+    create: true
+    fields:
+      - {label: "Titolo", name: "title", widget: "string"}
+      - {label: "Data", name: "date", widget: "datetime"}
+      - {label: "Contenuto", name: "body", widget: "markdown"}
+  - name: "gallery"
+    label: "Gallery"
+    folder: "src/content/gallery"
+    create: true
+    fields:
+      - {label: "Immagine", name: "image", widget: "image"}
+      - {label: "Descrizione", name: "caption", widget: "string"}

@@ -1,13 +1,17 @@
 // @ts-check
 
 import mdx from '@astrojs/mdx';
-import sitemap from '@astrojs/sitemap';
+import sitemap from '@astrojs/sitemap';// @ts-check
+import cloudflare from '@astrojs/cloudflare';
 import { defineConfig, fontProviders } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://example.com',
 	integrations: [mdx(), sitemap()],
+	adapter: cloudflare({
+		imageService: 'compile',
+	}),
 	fonts: [
 		{
 			provider: fontProviders.local(),
