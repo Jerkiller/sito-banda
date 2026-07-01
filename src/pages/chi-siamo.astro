@@ -2,7 +2,7 @@
 import AboutHeroImage from "../../src/assets/uploads/IMGR0737-e1556459266411-1024x794.jpg";
 import image2 from "../../src/assets/uploads/cropped-banda-vivaldi-1-1-3.png";
 import { Image } from 'astro:assets';
-import Layout from "../layouts/BlogPost.astro";
+import Layout from "../layouts/Page.astro";
 ---
 
 <Layout
@@ -12,9 +12,9 @@ import Layout from "../layouts/BlogPost.astro";
 	heroImage={AboutHeroImage}
 	draft={false}
 >
-	<h1>La nostra storia</h1>
+	<h2>La nostra storia</h2>
 	<p>
-		La Banda _Antonio Vivaldi_ nasce nell'Aprile del 2019 a Mestre da un
+		La Banda <i>Antonio Vivaldi</i> nasce nell'Aprile del 2019 a Mestre da un
 		gruppo di persone che già si trovava a suonare insieme. Il nostro logo,
 		disegnato da Rocco, ritrae la musica di Vivaldi e gli emblemi delle
 		città di Venezia e di Mestre. Città che tutti noi amiamo e in cui
@@ -29,10 +29,10 @@ import Layout from "../layouts/BlogPost.astro";
 			/>
 		</figure>
 	</p>
-	<h2>L’organico</h2><p>
+	<h2>L'organico</h2><p>
 		Attualmente la banda è formata da una ventina di persone di tutte le
 		età. Se anche tu come noi ami suonare insieme, o sei semplicemente
-		curioso, sei il benvenuto. Scrivici!
+		curioso, sei il benvenuto. <a href="/contattaci">Scrivici</a>!
 	</p>
 </Layout>
 

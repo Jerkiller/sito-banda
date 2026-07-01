@@ -1,7 +1,7 @@
 ---
 import type { ImageMetadata } from 'astro';
 import { Image } from 'astro:assets';
-import Layout from '../layouts/BlogPost.astro';
+import Layout from '../layouts/Page.astro';
 
 const galleryImages = Object.values(
 	import.meta.glob('../assets/gallery/*.{jpg,jpeg,png,webp}', { eager: true })
