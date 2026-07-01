@@ -16,7 +16,11 @@ const galleryImages = Object.values(
 >
 	<section class="gallery" aria-label="Galleria fotografica della Banda Antonio Vivaldi">
 		{galleryImages.map((image) => (
-			<figure class="gallery-item">
+			<figure
+				class="gallery-item"
+				data-image-src={image.src}
+				data-image-alt="Foto della Banda Antonio Vivaldi"
+			>
 				<Image
 					src={image}
 					alt="Foto della Banda Antonio Vivaldi"
@@ -27,7 +31,59 @@ const galleryImages = Object.values(
 			</figure>
 		))}
 	</section>
+
+	<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Anteprima immagine">
+		<button class="lightbox-close" id="lightbox-close" type="button" aria-label="Chiudi immagine">
+			<svg viewBox="0 0 24 24" aria-hidden="true">
+				<path d="M18.3 5.7a1 1 0 0 0-1.4 0L12 10.6 7.1 5.7A1 1 0 0 0 5.7 7.1l4.9 4.9-4.9 4.9a1 1 0 1 0 1.4 1.4l4.9-4.9 4.9 4.9a1 1 0 0 0 1.4-1.4L13.4 12l4.9-4.9a1 1 0 0 0 0-1.4Z" fill="currentColor" />
+			</svg>
+		</button>
+		<img id="lightbox-image" src="" alt="" />
+	</div>
 </Layout>
+
+<script>
+	const galleryItems = Array.from(document.querySelectorAll('.gallery-item'));
+	const lightbox = document.getElementById('lightbox');
+	const lightboxImage = document.getElementById('lightbox-image');
+	const lightboxClose = document.getElementById('lightbox-close');
+
+	function openLightbox(item) {
+		const imageSrc = item.getAttribute('data-image-src');
+		const imageAlt = item.getAttribute('data-image-alt');
+
+		if (!lightbox || !lightboxImage || !imageSrc) return;
+
+		lightboxImage.setAttribute('src', imageSrc);
+		lightboxImage.setAttribute('alt', imageAlt || '');
+		lightbox.hidden = false;
+		document.body.classList.add('lightbox-open');
+	}
+
+	function closeLightbox() {
+		if (!lightbox) return;
+		lightbox.hidden = true;
+		document.body.classList.remove('lightbox-open');
+	}
+
+	galleryItems.forEach((item) => {
+		item.addEventListener('click', () => openLightbox(item));
+	});
+
+	lightbox?.addEventListener('click', (event) => {
+		if (event.target === lightbox) {
+			closeLightbox();
+		}
+	});
+
+	lightboxClose?.addEventListener('click', closeLightbox);
+
+	document.addEventListener('keydown', (event) => {
+		if (event.key === 'Escape' && lightbox && !lightbox.hidden) {
+			closeLightbox();
+		}
+	});
+</script>
 
 <style>
 	.gallery {
@@ -39,6 +95,7 @@ const galleryImages = Object.values(
 
 	.gallery-item {
 		margin: 0;
+		cursor: pointer;
 	}
 
 	.gallery-item :global(img) {
@@ -47,5 +104,52 @@ const galleryImages = Object.values(
 		object-fit: cover;
 		border-radius: 12px;
 		box-shadow: 0 8px 24px rgba(15, 23, 42, 0.1);
+	}
+
+	:global(body.lightbox-open) {
+		overflow: hidden;
+	}
+
+	.lightbox {
+		position: fixed;
+		inset: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 1.5rem;
+		background: rgba(2, 6, 23, 0.95);
+		z-index: 1000;
+	}
+
+	.lightbox[hidden] {
+		display: none;
+	}
+
+	.lightbox-close {
+		position: absolute;
+		top: 1rem;
+		right: 1rem;
+		width: 44px;
+		height: 44px;
+		display: grid;
+		place-items: center;
+		border: 0;
+		border-radius: 999px;
+		background: rgba(255, 255, 255, 0.16);
+		color: white;
+		cursor: pointer;
+	}
+
+	.lightbox-close svg {
+		width: 22px;
+		height: 22px;
+	}
+
+	.lightbox img {
+		max-width: 100%;
+		max-height: 100%;
+		object-fit: contain;
+		border-radius: 12px;
+		box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
 	}
 </style>
