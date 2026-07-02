@@ -1,7 +1,9 @@
 ---
 import Layout from "../layouts/Page.astro";
+import { getWeb3FormsAccessKey } from "../consts";
 
 const isSuccess = Astro.url.searchParams.get("success") === "true";
+const web3FormsAccessKey = getWeb3FormsAccessKey(Astro.url.hostname);
 ---
 
 <Layout
@@ -48,7 +50,7 @@ const isSuccess = Astro.url.searchParams.get("success") === "true";
       <input
         type="hidden"
         name="access_key"
-        value="f820fa57-ede8-4733-bc10-152d3141855d"
+        value={web3FormsAccessKey}
       />
       <input
         type="hidden"
