@@ -3,6 +3,7 @@ title: Primo compleanno
 description: >-
   Il 9 Aprile la Banda Vivaldi ha festeggiato il suo primo compleanno. Il periodo che stiamo vivendo a causa della quarantena è drammatico.
 pubDate: 2020-04-19T00:00:00.000Z
+heroImage: ../../assets/uploads/IMGR0737-e1556459266411.jpg
 tags:
   - notizie
 ---
