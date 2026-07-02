@@ -42,15 +42,22 @@ const galleryImages = Object.values(
 </Layout>
 
 <script>
-	const galleryItems = Array.from(document.querySelectorAll('.gallery-item'));
+	const galleryItems = Array.from(document.querySelectorAll('.gallery-item')) as HTMLElement[];
 	const lightbox = document.getElementById('lightbox');
-	const lightboxImage = document.getElementById('lightbox-image');
-	const lightboxClose = document.getElementById('lightbox-close');
+	const lightboxImage = document.getElementById('lightbox-image') as HTMLImageElement;
+	const lightboxClose = document.getElementById('lightbox-close') as HTMLButtonElement;
 
-	function openLightbox(item) {
-			const thumbnail = item.querySelector('img');
-			const imageSrc = thumbnail?.currentSrc || thumbnail?.src;
-			const imageAlt = item.getAttribute('data-image-alt') || thumbnail?.getAttribute('alt');
+	function openLightbox(item: HTMLElement) {
+		const thumbnail = item.querySelector('img');
+		const imageSrc = thumbnail?.currentSrc || thumbnail?.src;
+		const imageAlt = item.getAttribute('data-image-alt') || thumbnail?.getAttribute('alt') || '';
+
+		if (!lightbox || !lightboxImage || !imageSrc) return;
+
+		lightboxImage.src = imageSrc;
+		lightboxImage.alt = imageAlt;
+		lightbox.hidden = false;
+		document.body.classList.add('lightbox-open');
 	}
 
 	function closeLightbox() {

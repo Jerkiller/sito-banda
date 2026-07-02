@@ -262,7 +262,7 @@ const web3FormsAccessKey = getWeb3FormsAccessKey(Astro.url.hostname);
     padding: 0.9rem 1.3rem;
     border: 0;
     border-radius: 999px;
-    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    background-color: var(--accent);
     color: white;
     font-weight: 700;
     cursor: pointer;
@@ -321,19 +321,14 @@ const web3FormsAccessKey = getWeb3FormsAccessKey(Astro.url.hostname);
     padding: 0.9rem 1.3rem;
     border: 0;
     border-radius: 999px;
-    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    background-color: var(--accent);
     color: white;
     font-weight: 700;
     cursor: pointer;
   }
 
   button:hover {
-    background: linear-gradient(135deg, #1d4ed8, #1e40af);
+    background-color: var(--accent-dark);
   }
 
-  .note {
-    margin-top: 1rem;
-    text-align: center;
-    color: #64748b;
-  }
 </style>
