@@ -18,7 +18,6 @@ const galleryImages = Object.values(
 		{galleryImages.map((image) => (
 			<figure
 				class="gallery-item"
-				data-image-src={image.src}
 				data-image-alt="Foto della Banda Antonio Vivaldi"
 			>
 				<Image
@@ -49,15 +48,9 @@ const galleryImages = Object.values(
 	const lightboxClose = document.getElementById('lightbox-close');
 
 	function openLightbox(item) {
-		const imageSrc = item.getAttribute('data-image-src');
-		const imageAlt = item.getAttribute('data-image-alt');
-
-		if (!lightbox || !lightboxImage || !imageSrc) return;
-
-		lightboxImage.setAttribute('src', imageSrc);
-		lightboxImage.setAttribute('alt', imageAlt || '');
-		lightbox.hidden = false;
-		document.body.classList.add('lightbox-open');
+			const thumbnail = item.querySelector('img');
+			const imageSrc = thumbnail?.currentSrc || thumbnail?.src;
+			const imageAlt = item.getAttribute('data-image-alt') || thumbnail?.getAttribute('alt');
 	}
 
 	function closeLightbox() {
