@@ -1,0 +1,29 @@
+backend:
+  name: github
+  repo: Jerkiller/sito-banda
+  branch: main
+  base_url: https://decap-oauth.luca-favorido.workers.dev
+  auth_endpoint: api/auth
+
+media_folder: "src/assets/uploads"
+# public_folder: "/images/uploads"
+# logo:
+#   src: https://your-site.com/images/logo.svg
+#   show_in_header: true
+
+# # This also works, but it's deprecated. Same as logo.src
+# logo_url: https://your-site.com/images/logo.svg
+# locale: 'it'
+
+collections:
+  - name: "blog" # Used in routes, e.g., /admin/collections/blog
+    label: "Blog" # Used in the UI
+    folder: "src/content/blog" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "string" }
+      - { label: "Publish Date", name: "pubDate", widget: "datetime" }
+      - { label: "Featured Image", name: "heroImage", widget: "image" }
+      - { label: "Body", name: "body", widget: "markdown" }
