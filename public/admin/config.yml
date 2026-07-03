@@ -7,9 +7,9 @@ backend:
 
 media_folder: "src/assets/uploads"
 # public_folder: "/images/uploads"
-# logo:
-#   src: https://your-site.com/images/logo.svg
-#   show_in_header: true
+logo:
+  src: https://bandavivaldi.it/favicon.svg
+  show_in_header: true
 
 # # This also works, but it's deprecated. Same as logo.src
 # logo_url: https://your-site.com/images/logo.svg
