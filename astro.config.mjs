@@ -5,11 +5,9 @@ import sitemap from '@astrojs/sitemap';// @ts-check
 import cloudflare from '@astrojs/cloudflare';
 import { defineConfig, fontProviders } from 'astro/config';
 
-import cloudflare from '@astrojs/cloudflare';
-
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://example.com',
+	site: 'https://bandavivaldi.it',
 	integrations: [mdx(), sitemap()],
 	adapter: cloudflare({
 		imageService: 'compile',
@@ -38,6 +36,4 @@ export default defineConfig({
 			},
 		},
 	],
-
-  adapter: cloudflare(),
 });

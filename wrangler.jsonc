@@ -1,4 +1,6 @@
 {
+    "workers_dev": false,
+    "preview_urls": false,
 	"$schema": "./node_modules/wrangler/config-schema.json",
 	"compatibility_date": "2026-06-29",
 	"compatibility_flags": ["global_fetch_strictly_public"],
